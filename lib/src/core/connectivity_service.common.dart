@@ -5,7 +5,7 @@
 import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:simple_connectivity/simple_connectivity.dart';
 
 import 'connectivity.mixin.dart';
 import 'connectivity_service.interface.dart';
@@ -73,31 +73,28 @@ class ConnectivityService extends ConnectivityServiceInterface
   Future<ConnectivityStatus> checkConnectivity() async => ConnectivityStatus
       .values[(await _connectivity.checkConnectivity()).index];
 
-  /// Obtains the wifi name (SSID) of the connected network.
-  ///
-  /// Please note that it DOESN'T WORK on emulators, Web, Windows and Linux (returns null).
-  ///
-  /// From android 8.0 onwards the GPS must be ON (high accuracy)
-  /// in order to be able to obtain the SSID.
-  @override
-  Future<String> getWifiName() => _connectivity.getWifiName();
-
-  /// Obtains the wifi BSSID of the connected network.
-  ///
-  /// Please note that it DOESN'T WORK on emulators, Web, Windows and Linux (returns null).
-  ///
-  /// From Android 8.0 onwards the GPS must be ON (high accuracy)
-  /// in order to be able to obtain the BSSID.
-  @override
-  Future<String> getWifiBSSID() => _connectivity.getWifiBSSID();
-
-  /// Obtains the IP address of the connected wifi network.
-  @override
-  Future<String> getWifiIP() => _connectivity.getWifiIP();
 
   @override
   void dispose() {
     super.dispose();
     _subscription?.cancel();
+  }
+
+  @override
+  Future<String> getWifiBSSID() {
+    // TODO: implement getWifiBSSID
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> getWifiIP() {
+    // TODO: implement getWifiIP
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> getWifiName() {
+    // TODO: implement getWifiName
+    throw UnimplementedError();
   }
 }
